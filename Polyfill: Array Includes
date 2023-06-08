@@ -1,13 +1,17 @@
-`
-if (!Array.prototype.includes) {
-  Array.prototype.includes = function(element) {
-    for (var i = 0; i < this.length; i++) {
-      if (this[i] === element) {
-        return true;
-      }
-    }
-    return false;
-  };
-}
+// Remove the existing includes method from the Array prototype
+delete Array.prototype.includes;
 
-`
+// Implement your own polyfill for includes
+Array.prototype.includes = function(element) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] === element) {
+      return true;
+    }
+  }
+  return false;
+};
+
+// Test the polyfill
+const array = [1, 2, 3, 4, 5];
+console.log(array.includes(3)); // Output: true
+console.log(array.includes(6)); // Output: false
