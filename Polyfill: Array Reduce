@@ -1,0 +1,40 @@
+The reduce method in JavaScript is used to apply a function to an accumulator and each element in an array 
+(from left to right) to reduce it to a single value. It iterates through the array and performs the specified 
+operation on each element, updating the accumulator with the result.
+
+const array = [1, 2, 3, 4, 5];
+const sum = array.reduce((accumulator, currentValue) => accumulator + currentValue);
+
+console.log(sum); // Output: 15
+
+polyfill:
+
+function myReduce(callBack, initialValue){
+  if(!this) throw new Error("Array is not defined");
+  
+  var arr = this;
+  var n = arr.length;
+  var index = 0;
+  var accumulator;
+  
+  if(initialValue){
+    accumulator = initialValue;
+  }
+  else{
+    accumulator = arr[index++];
+  }
+  
+  while(index < n)
+  {
+    accumulator = callBack(accumulator, array[index], index, array);
+  }
+  return accumulator;
+}
+
+Array.prototype.myReduce = myReduce;
+
+const arr = [1,2,3]
+const initialValue = 1;
+const callBack = (prev + curr) = prev + curr;
+
+console.log(arr.myReduce(callBack, initialValue);
