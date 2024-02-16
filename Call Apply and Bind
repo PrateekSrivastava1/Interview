@@ -1,0 +1,17 @@
+const person = {
+  name: "Prateek Srivastava",
+  hello: function(anotherPerson){
+    console.log(this.name + " says hello to " + anotherPerson);
+  },
+};
+
+var anotherObject = {
+  name: "Someone Else",
+};
+
+person.hello.apply(anotherObject, ["person 1"]);
+
+person.hello.call(anotherObject, "person 2");
+
+const bindReturnFunction = person.hello.bind(anotherObject);
+bindReturnFunction("person 3")
