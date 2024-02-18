@@ -1,0 +1,19 @@
+1: Mounting Phase:
+constructor(props)
+getDerivedStateFromProps(props, state)
+render()
+componentDidMount()
+
+2: Updating Phase:
+static getDerivedStateFromProps(nextProps, nextState)
+shouldComponentUpdate(nextProps, nextState)
+render()
+getSnapshotBeforeUpdate(prevProps, prevState)
+componentDidUpdate(prevProps, prevState, snapshot)
+
+3: Unmounting Phase:
+componentWillUnmount()
+
+4: Error Handling:
+static getDerivedStateFromError(error)
+componentDidCatch(error, info)
