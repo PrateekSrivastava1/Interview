@@ -1,0 +1,18 @@
+let counter = 0;
+
+const printLogs(){
+  console.log("writing something");
+}
+
+const debounce = (fn, delay) => {
+  let timer;
+  return function() {
+    let context = this, args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      printLogs().apply(context, args);
+    }, delay);
+  }
+}
+
+const betterFunction = debounce(printLogs, 300);
