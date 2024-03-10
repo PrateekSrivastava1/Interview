@@ -1,0 +1,21 @@
+
+implement calc.add(10).multiply(2).substract(10);
+
+const calc = {
+  total: 0,
+  add(num){
+    this.total += num;
+    return this;
+  },
+  multiply(num){
+    this.total *= num;
+    return this;
+  },
+  substract(num){
+    this.total -= num;
+    return this;
+  }
+};
+
+const result = calc.add(10).multiply(2).substract(10);
+console.log(result);
