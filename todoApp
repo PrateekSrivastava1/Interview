@@ -1,0 +1,98 @@
+//app.js file in react
+
+import { useState } from "react";
+import "./styles.css";
+
+export default function App() {
+  const [todoItem, setTodoItem] = useState("");
+  const [todoEditItem, setTodoEditItem] = useState([]);
+
+  const [editValue, setEditValue] = useState("");
+
+  const [todoItems, setTodoItems] = useState([]);
+
+  const handleSubmit = () => {
+    if (todoItem) {
+      setTodoItems([
+        ...todoItems,
+        { id: todoItems.length + 1, itemName: todoItem },
+      ]);
+      setTodoItem("");
+    }
+  };
+
+  const handleRemove = (id) => {
+    const updatedTodoItems = todoItems.filter((item) => item.id !== id);
+    setTodoItems(updatedTodoItems);
+  };
+
+  const handleEdit = () => {
+    const updatedItem = todoItems.map((item) => {
+      if (item.id === todoEditItem[0].id) {
+        return { ...item, itemName: editValue };
+      }
+      return item;
+    });
+    setTodoItems(updatedItem);
+    setTodoEditItem([]);
+  };
+
+  return (
+    <div className="App">
+      <input
+        type="text"
+        value={todoItem}
+        onChange={(e) => setTodoItem(e.target.value)}
+      />
+      <button onClick={handleSubmit}>Add</button>
+
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          flexDirection: "column",
+          marginTop: "30px",
+          alignItems: "center",
+        }}
+      >
+        {todoItems.map((item) => (
+          <div
+            style={{
+              display: "flex",
+              width: "40%",
+              justifyContent: "space-between",
+            }}
+          >
+            {todoEditItem.length === 1 && todoEditItem[0].id === item.id ? (
+              <>
+                <input
+                  type="text"
+                  value={editValue}
+                  onChange={(e) => setEditValue(e.target.value)}
+                />
+                <button onClick={handleEdit}>Save</button>
+              </>
+            ) : (
+              <>
+                <p
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handleRemove(item.id)}
+                >
+                  {item.itemName}
+                </p>
+                <button
+                  onClick={() => {
+                    setEditValue(item.itemName);
+                    setTodoEditItem([item]);
+                  }}
+                >
+                  Edit
+                </button>
+              </>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
