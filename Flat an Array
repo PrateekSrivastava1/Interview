@@ -1,0 +1,15 @@
+function flattenArray(value) {
+  // Write your code here
+  let result = [];
+    value.forEach(arr => {
+        if(Array.isArray(arr)){
+            result.push(...flattenArray(arr))   
+        }
+        else{
+            result.push(arr);
+        }
+    })
+  return result;
+}
+
+console.log(flattenArray([[1, 2, [3, [4, 5]]], 6]));
