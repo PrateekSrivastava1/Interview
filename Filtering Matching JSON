@@ -1,0 +1,53 @@
+const data = [
+    { name: 'Dave', company: 'Netflix', position: 'Data Analyst', level: 3},
+    { name: 'Sara', company: 'Amazon', position: 'Data Analyst', level:'Senior'}
+];
+
+const match = { position: 'Data Analyst', level: 3 };
+const expected = [{ name: 'Dave', company: 'Netflix', position: 'Data Analyst', level: 3}];
+
+const ans = [];
+
+const findMatches = (data, match) => {
+    
+    const matchKeys = Object.keys(match);
+    
+    data.map((person => {
+        const personKeys = Object.keys(person);
+        let totalkeyMatches = 0;
+        for(let i=0; i<personKeys.length; i++){
+            for(let j=0; j<matchKeys.length; j++){
+                if(personKeys[i] == matchKeys[j] && person[personKeys[i]] == match[matchKeys[j]]){
+                        totalkeyMatches++;
+                }
+            }
+            
+        }
+        if(totalkeyMatches == matchKeys.length){
+            ans.push(person);
+        }
+        totalkeyMatches = 0;
+    }))
+}
+
+findMatches(data, match);
+
+console.log("ans: ", ans);
+
+
+Clean Code Solution:
+
+const findMatches = (data, match) => {
+    const matchKeys = Object.keys(match);
+    
+    // Filter the data to find matching persons
+    const matches = data.filter(person => {
+        // Check if all match key-value pairs exist in the person object
+        return matchKeys.every(key => person[key] === match[key]);
+    });
+    
+    return matches;
+};
+
+const result = findMatches(data, match);
+console.log("Result:", result);
