@@ -1,0 +1,24 @@
+const loadash_get = (obj, path, defaultValue) => {
+    let result = obj;
+    if(typeof path === 'string'){
+        path = path.split('.');
+    }
+    for(const p of path){
+        result = result == null ? undefined : result[p];
+        if(result === undefined){
+            return defaultValue;
+        }
+    }
+    return result;
+}
+
+const person = {
+    name: 'someone',
+    age: 1,
+    address: {
+        building: 22,
+        landmark: 'near some place',
+    }
+}
+
+console.log(loadash_get(person, ['address','s']) || 'something');
