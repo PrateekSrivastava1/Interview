@@ -1,0 +1,18 @@
+PayU Fronted Interview Experience (SE/SDE 2-Selected)
+
+I recently interviewed for a Software Engineer(Frontend) position at PayU. Below are the key technical questions I encountered during the first round:
+ 
+1. Difference between `let`, `const`, and `var`: (Hoisting concepts should be explained with this)
+2. Arrow Functions vs. Regular Functions: Key differences
+3. Deep Copy vs. Shallow Copy: Differences and examples
+4. Higher-Order Components (HOC): Advantages and why HOCs are less commonly used nowadays
+5. CORS Error: When does it occur, and how can it be fixed from the frontend?
+6. Hooks:
+ - Name some hooks you’ve used.
+ - Explain `useContext` (including context API concepts), `useMemo`, `useRef`, and `useState`.
+7. Redux: What is Redux, and why is it used?
+8. Redux Thunk: What is Redux Thunk, and why is it used on top of Redux?
+9. Closures: Explanation with an example
+10. Building a React Project: How do you build a React project, and how can the build files be optimized?
+11. Custom Hooks: When have you used them in your projects?
+12. Deep Copy Function: Write code from scratch to create a deep copy for any kind of object (DSA).
