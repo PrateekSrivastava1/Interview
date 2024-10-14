@@ -1,0 +1,320 @@
+UseLayout Effect is synchronous and run before painting of dom happen.
+useEffect is synchronous and fast.
+
+JS
+Flatten polyfill
+Call,apply,bind poluyfill
+Debounce , throttle polyfill
+Falsy value in Js
+Arrow function property
+Null == undefined // true
+Null === undefined // false
+This keyword property
+Arrow function all functionality, not bounded to ‘this’ , didn’t have proptotye and canned be used can constructor function.
+tabIndex =’0’ make element selectable with key , and also we can add keyPress eventListner
+Arrow function are not hoisted
+Find focused element using: document.activeElement
+Build api abort controller
+Build promise
+Deep clone object
+Optimize single html file with , cache header and cookies
+Fetch , abortController and why data.json is async => as it read data body from async stream
+
+
+
+
+
+
+Carefully use arrow function , in defining prototype, as arrow function don’t have this of it’s own.
+
+
+
+
+CSS
+
+HTML
+
+REDUX
+Thunk help in keeping async code in action Creator, eg
+Function abc = id => (dispatch,getState) => if(id == something) {  
+API CALL then dispatch(action) }
+Difference between redux vs context api
+
+REACT
+Const [state] = useState(function pass, not call it) //useRef alternative
+React noticeable change from other framework
+Code splitting
+Optimization technique (font , image optimization , useMemo, useCallback, React.memo, code splitting, )
+useDevice hook 
+onKeyPress to handle key events
+Design analog watch 
+
+
+
+
+
+
+CleanUp function run after every re-render , as we are listening to state
+ useEffect(()=>{
+     console.log('mount');
+     
+     return ()=>{
+       console.log('unmount');
+     }
+  },[state])
+
+
+SYSTEM DESIGN
+Comment box
+Auto suggestion
+Cursor event , mouse event 
+Infinite table , virtualization 
+
+
+Good Resourse
+Yt frontendLead.com
+
+
+React/Machine coding (around 60-120min)
+
+👉 Introduction JSX
+👉 React Component
+👉 Component State and Props
+👉 Adding Style (CSS)
+👉 Functional and Class components
+👉 React Lifecycle Methods
+👉 Virtual DOM
+👉 React Hooks
+👉 Custom Hooks
+👉 Context API
+👉 Synthetic Events
+👉 Routing
+👉 Data Flow (Redux/Flux)
+👉 Server-Side Rendering
+👉 Unit Testing
+👉 Jest & React Testing library
+👉 Mocking Data
+👉 Understanding Webpack (Bundler)
+👉 Babel, env, prettier, linter
+
+Machine Coding
+💁‍♂️ Star Rating
+💁‍♂️ Design Pop Over
+💁‍♂️ Design Accordion
+💁‍♂️ Design Carousel
+💁‍♂️ Design grid using HTML/CSS and Javascript with search and sort, event bubbling (Amazon onsite)
+💁‍♂️ Design NavBar
+💁‍♂️ Infinite Scroll
+💁‍♂️ Typeahead / autocomplete using trie
+💁‍♂️ Implement Debounce function
+💁‍♂️ Implement tic tac toe
+💁‍♂️ Make snake ladder board
+💁‍♂️ Make calendar of any Month like Date Picker
+💁‍♂️ Implement throttle function ect
+
+
+🌲 Javascript (around 45-60 min)
+
+🍄 Design patterns like singleton, factory patterns etc
+🍄 Implement the publisher-subscriber pattern in javascript
+🍄 Implement the map, filter, reduce, and for Each polyfill
+🍄 Implement the Function.bind, call, apply method on the Function Prototype
+🍄 Implement Async. parallel, Async.series which executes a set of async tasks parallel and in series
+🍄 Implement Retry API with n number of
+🍄 Prototype and prototype inheritance
+🍄 How rendering work in the browser
+🍄 Event delegation and event propagation in js
+🍄 Implement Memoization
+🍄 Progressive Web application
+🍄 Clone an Object
+🍄 Debouncing and Throttling
+🍄 Implement clearAllTimeout()
+🍄 Build a Promise from Scratch
+🍄 Event Target — addEventListener, removeEventListener, dispatchEvent
+🍄 Intersection Observe
+
+
+
+Coding - 1 :
+========
+1.The UI should look like 7 boxes shaped in C shape.
+2.On clicking the box, its color changes to green.
+3.When all boxes are green, they should again go back to the previous color yellow, one by one, by a 1-second delay, in the same order as they were clicked.
+
+Coding - 2 :
+1.get the data from below url https://lnkd.in/gMWt2VgK
+2.Display a table which should contain years and population from this api
+3.Add a input where user can search year or population appy debouncing here.
+4.Add a reset button which will reset the data in table to initial data.
+5.Add delete option in each row which should delete respective row when clicked.
+
+Coding - 3 :
+1.Create a react component that displays a timer with initial value 0.
+2.There should be two buttons one to start/stop, and other to reset timer.
+3.Clicking on start will start timer from 0 and increase timer value by 1 for every second and button text should change to "stop".
+4.Clicking on stop will pause the timer and change button text to "start".
+5.Now click on start then timer should continue from paused value.
+6.Clicking on reset will reset the timer to initial value 0.
+
+Coding - 4 :
+1.get t ques & options from the API or create your own quiz object with questions and options,answer as properties (https://lnkd.in/gSCwr_rt).
+2.develop ui which shows quiz questions, answer choices, navigation buttons for 'Next' and 'Previous,' and a 'Submit' button.
+3.On the right, display the quiz progress with circular indicators and quiz question numbers.
+a)initially circle should be with no color. b) If user visits question and selects any option, change color to green, c) If user visits question and unanswered,then change color to red 4. After submit click, compute the count of unanswered, answered, correct, and incorrect responses.
+
+Coding-5 :
+1. Get the products data from below api which will return multiple products. https://lnkd.in/gxesn9bt
+2. Get the product details from below url based on productids from 1st api
+https://lnkd.in/gAWG8gie
+3. Now display the product details in the ui with all the details with good stylings and responsiveness.
+4. Display a dropdown which contains two options increasing and decreasing
+5. When increasing is selected, sort products as increasing order of prices and viseversa
+
+Coding - 6 :
+1.create 2 mock api's using promises. which return a list of students wi name, marks, and a unique registration id.
+2.merge the data from both api's and remove duplicates
+3.render the student data in box1 with checkboxes.
+4.allow the selection of multiple students simultaneously.
+5.move selected students to box2 by clicking right arrow and viceversa for left arrow.
+
+
+
+Frontend Machine Round/ Design Questions for Interview 🔥
+
+💁‍♂️ Star Rating
+
+💁‍♂️ Design Pop Over
+
+💁‍♂️ Design Accordion
+
+💁‍♂️ Design Carousel
+
+💁‍♂️ Design grid using HTML/CSS and Javascript with search and sort, event bubbling (Amazon onsite)
+
+💁‍♂️ Design NavBar
+
+💁‍♂️ Infinite Scroll
+
+💁‍♂️ Typeahead / autocomplete using trie
+
+💁‍♂️ Implement Debounce function
+
+💁‍♂️ Implement tic tac toe
+
+💁‍♂️ Make snake ladder board
+
+💁‍♂️ Make calendar of any Month like Date Picker
+
+💁‍♂️ Implement throttle function
+
+💁‍♂️ Implement custom Higher Order Functions like Map, Reduce, Filter, Sort
+
+💁‍♂️ Create an analog clock
+
+💁‍♂️ Make a todo list
+
+💁‍♂️ Create functionality to change all text on page to different translations
+
+💁‍♂️Search and display Giphy images (through Giphy api) in responsive format
+
+💁‍♂️ Build Connect Four
+
+💁‍♂️ Implement Nested Checkboxes (parent is checked, children are checked and vice versa. Must use actual checkbox input)
+
+💁‍♂️ Implement a poll widget
+
+💁‍♂️ Implement Event Emitter
+
+💁‍♂️ Implement promise.all function
+
+💁‍♂️ Flatten nested Javascript Array without using Array.prototype.flat()
+
+💁‍♂️ Implement Sort() function
+
+
+
+
+The top product-based companies evaluate the DSA for frontend engineers, and the most important one is Tree-based algorithms.
+
+That is because the DOM is represented as an N-arry tree, so if you understand Tree data structure and how to process it, it will highlight your expertise.
+
+One DSA question will surely be on the Tree or Linked list in Uber or Microsoft.
+
+I have added all the common Tree based algorithms on alpha[.]learnersbucket[.]com
+
+- Tree data structure
+- AVL Tree data structure
+- Tree traversal (Inorder, preorder, postorder)
+- Find height and width of a binary tree
+- Flatten a binary tree to linked list
+- Check if binary tree has path sum
+- Check if binary tree is symmetric
+- Check if binary tree is full
+- Print right view of a binary tree
+- Print left view of a binary tree
+- Print top view of a binary tree
+- Print bottom view of a binary tree
+- Diagonal traversal of a binary tree
+- Invert a binary tree | Recursive and Iterative
+- Find the floor and ceil of the binary tree
+- Find the least common ancestor (LCA) of a binary tree
+- Find the kth smallest and largest element in a binary tree
+- Serialize and deserialize a binary tree
+- Find the inorder successor of a given key in BST
+- Find the inorder predecessor of a given key in BST
+- Deepest leaves sum of a binary tree
+
+
+
+I wish someone had given me this cheat sheet when I started interviewing for software engineering positions.
+
+Topics covered: SOLID, ACID, System design concepts & Leetcode patterns.
+
+► SOLID Principles:
+
+1. Single Responsibility: Each class should have only one job.
+2. Open/Closed: Classes should be extendable without being modified.
+3. Liskov Substitution: Subclasses should be replaceable with their parent classes.
+4. Interface Segregation: Prefer small, specific interfaces over general ones.
+5. Dependency Inversion: Rely on abstractions rather than specific implementations.
+
+
+►ACID Properties:
+
+1. Atomicity: Transactions are indivisible units; they either fully succeed or completely fail.
+2. Consistency: Each transaction must maintain the database's consistency.
+3. Isolation: Transactions should execute independently without affecting each other.
+4. Durability: Once a transaction is finalized, it must persist even through system failures.
+
+► System Design Key Concepts
+
+1. Scalability: https://lnkd.in/gpge_z76
+2. Latency vs Throughput: https://lnkd.in/g_amhAtN
+3. CAP Theorem: https://lnkd.in/g3hmVamx
+4. ACID Transactions: https://lnkd.in/gMe2JqaF
+5. Rate Limiting: https://lnkd.in/gWsTDR3m
+6. API Design: https://lnkd.in/ghYzrr8q
+7. Strong vs Eventual Consistency: https://lnkd.in/gJ-uXQXZ
+8. Distributed Tracing: https://lnkd.in/d6r5RdXG
+9. Synchronous vs. asynchronous communications: https://lnkd.in/gC3F2nvr
+10. Batch Processing vs Stream Processing: https://lnkd.in/g4_MzM4s
+11. Fault Tolerance: https://lnkd.in/dVJ6n3wA
+
+► Leetcode problem-solving patterns
+
+1. Backtracking Patterns: https://lnkd.in/gVkQX5vA
+2. Bit Manipulation Patterns: https://lnkd.in/gmMMST5J
+3. Dynamic Programming Patterns 1: https://lnkd.in/gbpRU46g
+4. DFS + BFS Patterns (2): https://lnkd.in/gd4ekfQe
+5. Tree Patterns: https://lnkd.in/gKja_D5H
+6. Sliding Window Patterns: https://lnkd.in/gjatQ5pK
+7. Two Pointers Patterns: https://lnkd.in/gBfWgHYe
+8. DFS + BFS Patterns (1): https://lnkd.in/gPgpsgaQ
+9. Graph Patterns: https://lnkd.in/gKE6w7Jb
+10. Monotonic Stack Patterns: https://lnkd.in/gdYahWVN
+11. Substring Problem Patterns: https://lnkd.in/giASrwds
+12. Backtracking Patterns: https://lnkd.in/g9csxVa4
+13. Dynamic Programming Patterns 2: https://lnkd.in/gcnBActT
+14. Binary Search Patterns: https://lnkd.in/gKEm_qUK
+15. String Question Patterns: https://lnkd.in/gkNvEi8j
+16. 14 Coding Interview Patterns: https://lnkd.in/gMZJVkFf
