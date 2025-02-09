@@ -1,0 +1,50 @@
+import { useEffect, useState } from "react";
+
+export default Stopwatch = () => {
+  const [seconds, setSeconds] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [laps, setLaps] = useState([]);
+
+  const handleStartStopwatch = () => {
+    setIsRunning(true);
+  };
+
+  useEffect(() => {
+    if (!isRunning) return;
+    const interval = setInterval(() => {
+      setSeconds((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isRunning]);
+
+  const formatTime = () => {
+    const secs = seconds;
+    const mins = seconds / 60;
+    if (mins >= 1) {
+      return `${mins}:${secs}`;
+    }
+    return `${0}:${secs}`;
+  };
+
+  const captureLap = () => {
+    const secs = seconds;
+    const mins = seconds / 60;
+    let laptime = "";
+    if (mins >= 1) {
+      laptime = `${mins}:${secs}`;
+    }
+    laptime = `${0}:${secs}`;
+    setLaps((prevLaps) => [...prevLaps, laptime]);
+  };
+
+  return (
+    <>
+      {formatTime()}
+      <br />
+      <button onClick={handleStartStopwatch}>Start</button>
+      <button onClick={captureLap}>Lap</button>
+      {laps.length > 0 && laps}
+    </>
+  );
+};
