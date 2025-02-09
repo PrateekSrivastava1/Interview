@@ -1,48 +1,64 @@
-import { useEffect, useState } from "react";
-import "./styles.css";
+import { useState, useEffect } from "react";
 
-export default function App() {
-  const [timeInput, setTimeInput] = useState("");
-  const [timeLeftInSecs, setTimeLeftInSecs] = useState(0);
+const CountdownTimer = () => {
+  const [inputMinutes, setInputMinutes] = useState(""); // Input value in minutes
+  const [timeLeft, setTimeLeft] = useState(0); // Time in seconds
   const [isRunning, setIsRunning] = useState(false);
 
-  const handleStartTimer = () => {
-    setTimeLeftInSecs(parseInt(timeInput) * 60);
-    setIsRunning(true);
-  };
-
   useEffect(() => {
-    if (!isRunning || timeLeftInSecs <= 0) return;
+    if (!isRunning || timeLeft <= 0) return;
 
     const interval = setInterval(() => {
-      setTimeLeftInSecs((prev) => (prev > 0 ? prev - 1 : 0));
+      setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [isRunning]);
+  }, [isRunning, timeLeft]);
+
+  const startTimer = () => {
+    if (inputMinutes && !isNaN(inputMinutes)) {
+      setTimeLeft(parseInt(inputMinutes) * 60); // Convert minutes to seconds
+      setIsRunning(true);
+    }
+  };
+
+  const pauseTimer = () => setIsRunning(false);
+  const resetTimer = () => {
+    setIsRunning(false);
+    setTimeLeft(0);
+    setInputMinutes("");
+  };
 
   const formatTime = () => {
-    let minutes = Math.floor(timeLeftInSecs / 60);
-    let seconds = timeLeftInSecs % 60;
-
-    return `${String(minutes).padStart(2, "0")} : ${String(seconds).padStart(
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
       2,
       "0"
     )}`;
   };
 
   return (
-    <div>
-      <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+    <div style={{ textAlign: "center", fontFamily: "Arial, sans-serif" }}>
+      <h1>Countdown Timer</h1>
+      {!isRunning && (
         <input
           type="number"
-          placeholder="enter time in minutes"
-          onChange={(e) => setTimeInput(e.target.value)}
+          placeholder="Enter minutes"
+          value={inputMinutes}
+          onChange={(e) => setInputMinutes(e.target.value)}
         />
-        <button onClick={handleStartTimer}>start</button>
-        <button>pause</button>
-      </div>
-      {<div>{formatTime()}</div>}
+      )}
+      <h2>{formatTime()}</h2>
+      <button onClick={startTimer} disabled={isRunning || !inputMinutes}>
+        Start
+      </button>
+      <button onClick={pauseTimer} disabled={!isRunning}>
+        Pause
+      </button>
+      <button onClick={resetTimer}>Reset</button>
     </div>
   );
-}
+};
+
+export default CountdownTimer;
