@@ -1,0 +1,40 @@
+In JavaScript, besides Promise.all(), there are several other functions for handling multiple promises efficiently:
+
+Promise.allSettled()
+
+Waits for all promises to settle (either fulfilled or rejected).
+Returns an array of objects with { status, value } or { status, reason }.
+
+`const promises = [
+  Promise.resolve(1),
+  Promise.reject("Error"),
+  Promise.resolve(3),
+];
+
+Promise.allSettled(promises).then(console.log);
+`
+
+Promise.race()
+
+Resolves or rejects as soon as the first promise settles.
+
+`
+const p1 = new Promise((resolve) => setTimeout(resolve, 100, "A"));
+const p2 = new Promise((resolve) => setTimeout(resolve, 50, "B"));
+
+Promise.race([p1, p2]).then(console.log); // "B"
+`
+
+
+Promise.any()
+
+Resolves as soon as one promise fulfills.
+Ignores rejected promises and throws an AggregateError if all reject.
+
+`
+const p1 = Promise.reject("Error 1");
+const p2 = new Promise((resolve) => setTimeout(resolve, 50, "Success"));
+const p3 = Promise.reject("Error 2");
+
+Promise.any([p1, p2, p3]).then(console.log).catch(console.error); // "Success"
+`
