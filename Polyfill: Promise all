@@ -1,0 +1,46 @@
+const p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('resolved p1');
+    }, 1000);
+})
+
+const p2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('resolved p2');
+    }, 2000);
+})
+
+const p3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('resolved p3');
+    }, 3000);
+})
+
+const promiseArr = [p1,p2,p3];
+
+const myPromiseAll = (pArr) => {
+    const output = [];
+    let completed = 0;
+    return new Promise((resolve, reject) => {
+        try{
+            pArr.forEach((p => {
+                const completedP = Promise.resolve(p).then((value => {
+                    completed++;
+                    output.push(value);
+            
+                    if(completed === pArr.length){
+                        resolve(output);
+                    }
+                }))
+            }))
+        }
+        catch(error){
+            reject(error);
+        }
+    })
+}
+
+
+console.log(myPromiseAll(promiseArr).then((values) => {
+    console.log(values);
+}));
