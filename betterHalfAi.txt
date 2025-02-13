@@ -1,0 +1,143 @@
+https://codesandbox.io/p/sandbox/xr25vf?file=%2Fsrc%2FApp.tsx%3A12%2C32
+stopwatch:
+
+import { useEffect, useState } from "react";
+import "./styles.css";
+
+export default function App() {
+  const [timeInSeconds, setTimeInSeconds] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+
+  const formatTime = () => {
+    const mins = Math.floor(timeInSeconds / 60);
+    const secs = timeInSeconds % 60;
+
+    return `${mins} : ${secs}`;
+  };
+
+  useEffect(() => {
+    if (!isRunning) return;
+    const intervalId = setInterval(() => {
+      setTimeInSeconds((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [isRunning]);
+
+  const handleReset = () => {
+    setTimeInSeconds(0);
+    setIsRunning(false);
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        marginTop: "100px",
+        gap: "100px",
+      }}
+    >
+      {formatTime()}
+      <div
+        style={{
+          display: "flex",
+          gap: "10px",
+        }}
+      >
+        <button onClick={() => setIsRunning(true)}>start</button>
+        <button onClick={() => setIsRunning(false)}>stop</button>
+        <button onClick={handleReset}>reset</button>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+flatAnArray:
+
+const arr  = [[1,2], [3,[4,5, {z:67}, [6,7]]], 8, 9, {x: 6}]
+
+
+const flattenArray = (array, depth = 1) => {
+    if(depth === 0){
+        return array;
+    }
+    
+    const result = [];
+    
+    array.forEach(element => {
+        if(Array.isArray(element)){
+            const res = flattenArray(element, depth - 1);
+            result.push(...res);
+        }
+        else{
+            result.push(element);
+        }
+    })
+    
+    return result;
+}
+
+console.log(flattenArray(arr, 3));
+
+// console.log(arr.flattenArray(0))
+//[ [ 1, 2 ], [ 3, [ 4, 5, {z:67}, [6,7] ] ], 8, 9, { x: 6 } ]
+// console.log(arr.flattenArray(1))
+// [ 1, 2, 3, [ 4, 5, { z: 67 }, [ 6, 7 ] ], 8, 9, { x: 6 } ]
+// console.log(arr.flattenArray(Infinity))
+//[ 1, 2, 3, 4, 5, { z: 67 }, 6, 7, 8, 9, { x: 6 } ]
+// console.log(arr.flattenArray(2))
+// [ 1, 2, 3, 4, 5, { z: 67 }, [ 6, 7 ], 8, 9, { x: 6 } ]
+
+
+// console.log(arr.flat(2));
+
+
+
+
+
+
+
+
+query string:
+
+const input = {
+    name: "abc",
+    rooms: null,
+    value : "temp",
+    rooms3: null,
+    rooms4: 'ergklrbjskfhj',
+    rooms1: null,  
+    guestCount: 20,
+    rooms: null,
+    rooms: null,
+    rooms: null,
+    rooms: null,
+}
+
+// output string : "name=abc&value=temp&guestCount=20"
+
+ // console.log('query: ', query, queryObj[query], index)
+//         if(queryObj[query]){
+// queryString += `${query}=${queryObj[query]}${index === queryKeys.length - 1 ? '' : '&'}`;
+
+const getQuery = (queryObj) => {
+    let queryString = '';
+    const queryKeys = Object.keys(input);
+    const queryArray = queryKeys.map(((query, index) => {
+               if(queryObj[query]){
+queryString += `${query}=${queryObj[query]}${index === queryKeys.length - 1 ? '' : '&'}`;
+        }
+    }));
+    // const str = queryArray.join('&');
+    const queryString1 = queryString.slice(0,queryString.length-1);
+    return queryString1;
+}
+
+
+console.log('queryAns: ', getQuery(input));
