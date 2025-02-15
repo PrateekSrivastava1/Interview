@@ -78,13 +78,15 @@ Redux enforces a clear structure: Store → Action → Reducer.
 
 
 # 8: Redux vs Context API: When to Use What?
-Feature	Redux	Context API
-State Complexity	✅ Best for large & complex state	⚠️ Good for simple state
-Frequent Updates	✅ Optimized with reducers	⚠️ Causes unnecessary re-renders
-Performance	✅ Uses selectors to avoid extra re-renders	⚠️ Every consumer re-renders on state change
-Debugging	✅ Redux DevTools (Time-travel, logs)	⚠️ No built-in debugging
-Middleware Support	✅ Supports Thunk, Saga for async logic	❌ No middleware support
-Scalability	✅ Best for large applications	⚠️ Can become unmanageable in big apps
+| Feature                | Redux                                   | Context API                            |
+|------------------------|-----------------------------------------|----------------------------------------|
+| **State Complexity**    | ✅ Best for large & complex state      | ⚠️ Good for simple state              |
+| **Frequent Updates**    | ✅ Optimized with reducers             | ⚠️ Causes unnecessary re-renders      |
+| **Performance**         | ✅ Uses selectors to avoid extra re-renders | ⚠️ Every consumer re-renders on state change |
+| **Debugging**           | ✅ Redux DevTools (Time-travel, logs)  | ⚠️ No built-in debugging              |
+| **Middleware Support**  | ✅ Supports Thunk, Saga for async logic | ❌ No middleware support              |
+| **Scalability**         | ✅ Best for large applications         | ⚠️ Can become unmanageable in big apps|
+
 
 
 # 9: When to Use Redux?
