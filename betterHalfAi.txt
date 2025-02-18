@@ -1,3 +1,5 @@
+round 1:
+
 https://codesandbox.io/p/sandbox/xr25vf?file=%2Fsrc%2FApp.tsx%3A12%2C32
 stopwatch:
 
@@ -141,3 +143,19 @@ queryString += `${query}=${queryObj[query]}${index === queryKeys.length - 1 ? ''
 
 
 console.log('queryAns: ', getQuery(input));
+
+
+
+
+
+
+
+
+
+round 2:
+
+Promise all polyfill
+problem solving using currying
+Tictactoe: https://codesandbox.io/p/sandbox/t689vq?file=%2Fsrc%2FApp.js%3A71%2C1
+
+
