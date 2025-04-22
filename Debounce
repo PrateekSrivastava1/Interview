@@ -4,13 +4,14 @@ const printLogs = () => {
   console.log("writing something");
 }
 
-const myDebounce = (cb, d) => {
+const myDebounce = (func, delay) => {
     let timeoutId;
-    return function(...args){
+    return (...args) => {
+        clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
-            cb(...args);
-        }, d);
-    }
-}
+            func.apply(this, args);
+        }, delay);
+    };
+};
 
 const betterFunction = myDebounce(printLogs, 300);
