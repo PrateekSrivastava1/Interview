@@ -1,0 +1,19 @@
+const abc = {
+  name : 'porche'
+}
+
+function checkAbc (a, b){
+  return this.name + " " + a + " " + b;
+}
+
+Function.prototype.myCall = function(context = {}, ...args){
+  if(typeof this != "function"){
+    throw new Error(this + "cannot be called using apply");
+  }
+
+  context.fn = this;
+  const result = context.fn(...args)
+  return result;
+}
+
+console.log(checkAbc.myCall(abc, "something", "something 2"));
