@@ -1,0 +1,41 @@
+const p1 = new Promise((resolve) => setTimeout(() => resolve('resolved p1'), 3000));
+const p2 = new Promise((_, reject) => setTimeout(() => reject('rejected p2'), 1000));
+const p3 = new Promise((resolve) => setTimeout(() => resolve('resolved p3'), 2000));
+
+const promiseArr = [p1, p2, p3];
+
+const myPromiseAllSettled = (pArr) => {
+  return new Promise((resolve) => {
+    // 4. Handle empty array edge case
+    if (pArr.length === 0) {
+      resolve([]);
+      return;
+    }
+
+    const output = new Array(pArr.length);
+    let completed = 0;
+
+    pArr.forEach((p, index) => {
+      Promise.resolve(p)
+        .then((value) => {
+          // 1 & 2. Store by index with 'fulfilled' status
+          output[index] = { status: 'fulfilled', value };
+        })
+        .catch((reason) => {
+          // 3. Catch individual rejection without failing the whole batch
+          output[index] = { status: 'rejected', reason };
+        })
+        .finally(() => {
+          // Runs whether resolved or rejected
+          completed++;
+          if (completed === pArr.length) {
+            resolve(output);
+          }
+        });
+    });
+  });
+};
+
+myPromiseAllSettled(promiseArr).then((results) => {
+  console.log(results);
+});
