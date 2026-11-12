@@ -1,0 +1,20 @@
+const abc = {
+  name : 'porche'
+}
+
+function checkAbc (extra){
+  return this.name + " "+ extra
+}
+
+Function.prototype.myBind = function(context = {}, ...args){
+  if(typeof this != "function"){
+    throw new Error(this + "cannot be bound as its not callable");
+  }
+
+  context.fn = this;
+  return function(...newArgs){
+    return context.fn(...args, ...newArgs);
+  }
+}
+
+console.log(checkAbc.myBind(abc, ["something", "something 2"])());
