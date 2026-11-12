@@ -1,3 +1,4 @@
+// normal currying
 const curry = (fn) => {
   return curried = (...args) => {
     console.log(fn.length, " nums: ", args.length);
@@ -11,6 +12,14 @@ const total = (x, y, z) => x + y + z;
 const curriedTotal = curry(total);
 console.log(curriedTotal(10)(20)(30));
 
+// function curr(...b){
+//   return function sum(...a){
+//     if (a?.length === 0) return b[0];
+//     else return curr(a.reduce((a, b) => a + b, 0) + b.reduce((a, b) => a + b, 0));
+//   }
+// }
+
+// console.log(curr(2, 3, 5, 1)(4, 2)());
 
 infinite currying:
 const curry = (fn) => {
