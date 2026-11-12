@@ -1,0 +1,35 @@
+const curry = (fn) => {
+  return curried = (...args) => {
+    console.log(fn.length, " nums: ", args.length);
+    if(fn.length !== args.length) return curried.bind(null, ...args);
+    return fn(...args);
+  }
+}
+
+
+const total = (x, y, z) => x + y + z;
+const curriedTotal = curry(total);
+console.log(curriedTotal(10)(20)(30));
+
+
+infinite currying:
+const curry = (fn) => {
+  return function curried(...args) {
+    return function (...nextArgs) {
+      // Stop when called with empty parentheses ()
+      if (nextArgs.length === 0) {
+        return fn(...args);
+      }
+      // Freeze the new arguments onto `curried` and keep waiting
+      return curried.bind(null, ...args, ...nextArgs)();
+    };
+  };
+};
+
+// Update total to handle any number of arguments
+const total = (...nums) => nums.reduce((acc, curr) => acc + curr, 0);
+
+const curriedTotal = curry(total);
+
+console.log(curriedTotal(10)(20)(30)());       // 60
+console.log(curriedTotal(10, 20)(30)(40, 50)()); // 150
