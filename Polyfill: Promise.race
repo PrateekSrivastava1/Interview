@@ -1,0 +1,19 @@
+const p1 = new Promise((resolve) => setTimeout(() => resolve('resolved p1'), 3000));
+const p2 = new Promise((_, reject) => setTimeout(() => reject('rejected p2'), 1000));
+const p3 = new Promise((resolve) => setTimeout(() => resolve('resolved p3'), 2000));
+
+const promiseArr = [p1, p2, p3];
+
+const myPromiseRace = (pArr) => {
+  return new Promise((resolve, reject) => {
+    pArr.forEach((p) => {
+      // Whichever settles first (fulfills OR rejects) wins the race
+      Promise.resolve(p).then(resolve, reject);
+    });
+  });
+};
+
+myPromiseRace(promiseArr)
+  .then((value) => console.log('Resolved:', value))
+  .catch((err) => console.log('Rejected:', err));
+// Output (after 1000ms): Rejected: rejected p2
